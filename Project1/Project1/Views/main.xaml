@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project1.Views.main"
+             BackgroundImageSource="bg.png">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <Button Text="Logout" HorizontalOptions="Start" Clicked="Button_Clicked" BackgroundColor="Transparent"/>
+                <Button Grid.Column="1" Text="Job List" HorizontalOptions="End" BackgroundColor="Transparent"/>
+            </Grid>
+         
+            <Frame Grid.Row="2" Margin="50,-80,50,0" CornerRadius="20">
+                
+
+                <ListView x:Name="listView" Margin="30,100,30,30" ItemsSource ="{Binding data}"  ItemSelected="listView_ItemSelected">
+                    <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                                <Grid Margin="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition Width="200"/>
+
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding img}" Grid.RowSpan="2" Grid.Column="0" WidthRequest="40" HorizontalOptions="Center"/>
+                                    <Label Grid.Column="1"
+                                     Text="{Binding name}"
+                                     FontAttributes="Bold"/>
+                                    <Label Grid.Column="2"
+                                     Text="{Binding date}"
+                                     FontAttributes="Bold"/>
+                                    <Label Grid.Row="1" Grid.Column="1"
+                                           Text="{Binding customer}"
+                                     FontAttributes="Bold"/>
+                                </Grid>
+                            </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                </ListView>
+
+            </Frame>
+            <Grid Grid.Row="3" Margin="110,-330,130,330">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="95"/>
+                    <ColumnDefinition Width="95"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="name" FontSize="15" HorizontalOptions="Center"/>
+                <Label  x:Name="surname" FontSize="15" Grid.Column="1"/>
+                <Label x:Name="username" FontSize="15" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="Center"/>
+            </Grid>
+            
+        
+            <Frame Grid.Row="1" HeightRequest="180" WidthRequest="180"  HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="200" Padding="-5" >
+                <Image Source="user.png"  Aspect="AspectFit"/>
+            </Frame>
+            <ImageButton Source="add.png"  Aspect="AspectFit" Grid.Row="4"  Margin="180,-100,180,80" WidthRequest="1" Clicked="ImageButton_Clicked" BackgroundColor="Transparent"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
